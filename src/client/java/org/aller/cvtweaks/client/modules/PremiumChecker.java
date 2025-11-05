@@ -94,9 +94,9 @@ public class PremiumChecker {
                     // Send message to player
                     MinecraftClient.getInstance().execute(() -> {
                         if (isPremium) {
-                            sendHudMessage("§6§lUsing CVTweaks 1.0.0 - PREMIUM");
+                            sendHudMessage("§6§lUsing CVTweaks 1.1.2 - PREMIUM");
                         } else {
-                            sendHudMessage("§7Using CVTweaks 1.0.0 - FREE");
+                            sendHudMessage("§7Using CVTweaks 1.1.2 - FREE");
                         }
                     });
                 } else {
