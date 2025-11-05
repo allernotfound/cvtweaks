@@ -43,7 +43,7 @@ There are tons of other commands you can use
 
 ## Premium
 Most of the mod's utility features are premium, which requires you to pay cubes to access those features.
-It is only a one-time payment of 80 cubes, and please message me before sending it so I'm aware and I will add your user to the database/
+It is only a one-time payment of 80 cubes, and please message me before sending it so I'm aware and I will add your user to the database
 
 ## Download
 You can download it from the release tab on the right, where you can find all the versions.
