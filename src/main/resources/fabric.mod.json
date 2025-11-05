@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "cvtweaks",
+  "version": "${version}",
+  "name": "cvtweaks",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/cvtweaks/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.aller.cvtweaks.client.CVTweaksDataGenerator"
+    ],
+    "client": [
+      "org.aller.cvtweaks.client.CVTweaksClient"
+    ],
+    "main": [
+      "org.aller.cvtweaks.CVTweaks"
+    ]
+  },
+  "mixins": [
+    "cvtweaks.mixins.json",
+    {
+      "config": "cvtweaks.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
