@@ -3,8 +3,10 @@ package org.aller.cvtweaks.client.modules;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import org.aller.cvtweaks.client.cool.GradientActionBar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,12 +93,17 @@ public class PremiumChecker {
 
                     LOGGER.info("Premium status checked: {}", isPremium);
 
+                    String currentVersion = FabricLoader.getInstance()
+                            .getModContainer("cvtweaks")
+                            .get().getMetadata().getVersion().getFriendlyString();
+
+
                     // Send message to player
                     MinecraftClient.getInstance().execute(() -> {
                         if (isPremium) {
-                            sendHudMessage("§6§lUsing CVTweaks 1.1.2 - PREMIUM");
+                            GradientActionBar.show("Using CVTweaks " + currentVersion + " premium");
                         } else {
-                            sendHudMessage("§7Using CVTweaks 1.1.2 - FREE");
+                            sendHudMessage("§7Using CVTweaks " + currentVersion + " free");
                         }
                     });
                 } else {
