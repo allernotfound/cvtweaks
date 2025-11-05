@@ -22,12 +22,14 @@ public class CVTweaksClient implements ClientModInitializer {
     public void onInitializeClient() {
         // iniitalizes the premium checker (why do i bother adding comments)
         PremiumChecker.init();
+        AutoUpdater.init();
 
         ChannelToggle.init();
         WCSafety.init();
         Ignore.init();
         AutoHome.init();
         NearestDrop.init();
+        ScamBase.init();
 
         // old cvtweaks ported stuff
 
