@@ -1,5 +1,5 @@
 # CVTweaks
-CVTweaks is a collection of features designed to make playing on the Cubeville minecraft server (`cubeville.org`) more efficiently.
+CVTweaks is a collection of features designed to make playing on the Cubeville minecraft server (`cubeville.org`) more efficient.
 
 ## Features:
 ### Free:
