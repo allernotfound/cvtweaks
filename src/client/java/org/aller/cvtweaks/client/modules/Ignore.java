@@ -93,9 +93,6 @@ public class Ignore {
         ClientReceiveMessageEvents.ALLOW_GAME.register((message, overlay) -> {
             return shouldDisplayMessage(message);
         });
-
-        // Optional: notify once player joins a world
-        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> sendHudMessage("[CVTweaks] IgnoreModule loaded!"));
     }
 
     // Sends a chat message safely to HUD

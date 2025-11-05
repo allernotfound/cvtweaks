@@ -15,7 +15,6 @@ public class CVTweaksClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        sendHudMessage("§7Currently running CVTweaks 1.0.0");
 
         // iniitalizes the premium checker (why do i bother adding comments)
         PremiumChecker.init();
