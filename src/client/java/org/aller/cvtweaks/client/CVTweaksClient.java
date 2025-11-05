@@ -22,7 +22,7 @@ public class CVTweaksClient implements ClientModInitializer {
     public void onInitializeClient() {
         // iniitalizes the premium checker (why do i bother adding comments)
         PremiumChecker.init();
-        AutoUpdater.init();
+        // AutoUpdater.init(); i see why they call me a quitter (im not adding this bro)
 
         ChannelToggle.init();
         WCSafety.init();

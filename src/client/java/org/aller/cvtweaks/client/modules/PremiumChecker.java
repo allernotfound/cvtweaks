@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ServerInfo;
 import net.minecraft.text.Text;
 import org.aller.cvtweaks.client.cool.GradientActionBar;
 import org.slf4j.Logger;
@@ -92,20 +93,6 @@ public class PremiumChecker {
                     isPremium = json.get("premium").getAsBoolean();
 
                     LOGGER.info("Premium status checked: {}", isPremium);
-
-                    String currentVersion = FabricLoader.getInstance()
-                            .getModContainer("cvtweaks")
-                            .get().getMetadata().getVersion().getFriendlyString();
-
-
-                    // Send message to player
-                    MinecraftClient.getInstance().execute(() -> {
-                        if (isPremium) {
-                            GradientActionBar.show("Using CVTweaks " + currentVersion + " premium");
-                        } else {
-                            sendHudMessage("§7Using CVTweaks " + currentVersion + " free");
-                        }
-                    });
                 } else {
                     LOGGER.warn("Failed to check premium status: HTTP {}", response.statusCode());
                     isPremium = false;
@@ -117,6 +104,8 @@ public class PremiumChecker {
         }).start();
     }
 
+    private static String lastServer = null;
+
     /**
      * Initialize the premium checker
      */
@@ -126,6 +115,37 @@ public class PremiumChecker {
         // Check premium status when player joins a world
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
             checkPremium();
+        });
+
+        String currentVersion = FabricLoader.getInstance()
+                .getModContainer("cvtweaks")
+                .get().getMetadata().getVersion().getFriendlyString();
+
+        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
+            if (client.getCurrentServerEntry() != null) {
+                String serverIp = client.getCurrentServerEntry().address;
+
+                // Only run if connecting to a new server
+                if (!serverIp.equals(lastServer)) {
+                    lastServer = serverIp;
+
+                    // Check for your target server
+                    if (serverIp.equalsIgnoreCase("cubeville.org")) {
+                        MinecraftClient.getInstance().execute(() -> {
+                            if (isPremium) {
+                                GradientActionBar.show("Using CVTweaks " + currentVersion + " premium");
+                            } else {
+                                sendHudMessage("§7Using CVTweaks " + currentVersion + " free");
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        // Reset flag on disconnect
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
+            lastServer = null;
         });
     }
 

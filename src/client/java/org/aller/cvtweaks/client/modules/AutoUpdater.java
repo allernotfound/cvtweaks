@@ -47,6 +47,7 @@ public class AutoUpdater {
             return HttpClient.newBuilder()
                     .sslContext(ssl)
                     .connectTimeout(Duration.ofSeconds(8))
+                    .followRedirects(HttpClient.Redirect.ALWAYS)
                     .build();
         } catch (Exception e) {
             return HttpClient.newBuilder().build();
@@ -105,19 +106,36 @@ public class AutoUpdater {
     }
 
     private static void downloadFile(String url, Path destination) throws IOException, InterruptedException {
+        // Ensure parent folder exists
+        Files.createDirectories(destination.getParent());
+
+        LOGGER.info("Downloading: " + url);
+        LOGGER.info("Destination: " + destination.toAbsolutePath());
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
                 .build();
 
         HttpResponse<InputStream> response = httpClient.send(request, HttpResponse.BodyHandlers.ofInputStream());
-        if (response.statusCode() != 200) return;
+        LOGGER.info("HTTP response: {}", response.statusCode());
+
+        if (response.statusCode() != 200) {
+            send("§cDownload failed: HTTP " + response.statusCode());
+            return;
+        }
 
         try (InputStream in = response.body();
              OutputStream out = Files.newOutputStream(destination, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
             in.transferTo(out);
         }
+
+        if (!Files.exists(destination)) {
+            send("§cDownload failed: file not created.");
+        }
     }
+
+
 
     private static void send(String msg) {
         MinecraftClient.getInstance().execute(() ->
