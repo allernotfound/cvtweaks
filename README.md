@@ -6,7 +6,8 @@ CVTweaks is a collection of features designed to make playing on the Cubeville m
 * RegionScript - a simple scripting language that allows you to make specific regions do different actions, like showing titles, playing music, and creating basic minigames, all on the client
 * Toggle gamemode keybind - (default key is Y) lets you quickly change your Creative gamemode with the press of a key
 * Fly speed changer - use the - and + keys to increase or decrease your creative fly speed, you can also press both to reset it to the default
-* /cvwiki \<search\> - allows you to search for any topic on the *unofficial* Cubeville wiki and get a link to it
+* `/cvwiki <search>` - allows you to search for any topic on the *unofficial* Cubeville wiki and get a link to it
+* `/scamreports <player>` and `/reportscam <player> <reason>` - searches and uploads reports of players scamming to our database (joke or spam reports will be removed)
 
 ### Premium:
 * All features of free PLUS:
