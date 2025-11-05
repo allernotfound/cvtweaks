@@ -1,2 +1,7 @@
-Copyright (c) 2025 
+Copyright (c) 2025 aller
+
 All rights reserved.
+
+You may view and reference this source code for transparency and educational purposes only.
+You may NOT redistribute, modify, or create derivative works of this code,
+nor may you use it to circumvent any premium or license checks.
