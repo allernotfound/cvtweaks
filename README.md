@@ -1,4 +1,7 @@
 # CVTweaks
+
+### CVTWEAKS IS NOT AFFILIATED WITH CUBEVILLE IN ANYWAY, THIS IS AN UNOFFICIAL PLAYER-MADE MOD WHICH IS NOT ENDORSED BY CUBEVILLE IN ANY WAY
+
 CVTweaks is a collection of features designed to make playing on the Cubeville minecraft server (`cubeville.org`) more efficient.
 
 ## Features:
