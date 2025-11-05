@@ -24,7 +24,7 @@ public class ChannelToggle {
     public static void init() {
         // Register /group command
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
-                dispatcher.register(ClientCommandManager.literal("group")
+                dispatcher.register(ClientCommandManager.literal("groupchat")
                         .executes(ctx -> {
                             if (!PremiumChecker.isPremium()) {
                                 sendHudMessage("§cThe channel toggle feature requires premium!");
@@ -48,7 +48,7 @@ public class ChannelToggle {
 
         // Register /global command
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
-                dispatcher.register(ClientCommandManager.literal("global")
+                dispatcher.register(ClientCommandManager.literal("globalchat")
                         .executes(ctx -> {
                             if (!PremiumChecker.isPremium()) {
                                 sendHudMessage("§cThe channel toggle feature requires premium!");
